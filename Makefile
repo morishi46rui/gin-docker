@@ -27,3 +27,8 @@ prune:
 # backendコンテナのbashに入る（Alpineベースならsh）
 bash:
 	docker compose exec backend sh
+
+# Swaggerドキュメントを生成
+swag:
+	cd backend && swag init
+	

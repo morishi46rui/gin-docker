@@ -13,10 +13,11 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-# アプリケーションのコピー
-COPY . .
+# 🔥 `docs/` を明示的にコピー
+COPY docs ./docs
+COPY main.go ./
 
-# 🔥 Linux用にクロスコンパイルしてビルド
+# ビルド
 RUN GOOS=linux GOARCH=amd64 go build -o gin-server main.go && ls -l gin-server
 
 # ポートの公開
